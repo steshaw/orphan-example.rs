@@ -9,9 +9,7 @@ impl ToString for Vec<char> {
 */
 
 // Wrapper for vec<char> to implement Display.
-struct V {
-    v: Vec<char>,
-}
+struct V(Vec<char>);
 
 impl fmt::Display for V {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -19,11 +17,11 @@ impl fmt::Display for V {
         // stream: `f`. Returns `fmt::Result` which indicates whether the
         // operation succeeded or failed. Note that `write!` uses syntax which
         // is very similar to `println!`.
-        write!(f, "{:?}", self.v)
+        write!(f, "{:?}", self.0)
     }
 }
 
 fn main() {
-    let v = V { v: vec!['a', 'b'] };
+    let v = V(vec!['a', 'b']);
     println!("Hello {}", v);
 }
